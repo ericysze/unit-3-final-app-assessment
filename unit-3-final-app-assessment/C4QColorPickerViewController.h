@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ColorPassingDelegate <NSObject>
+
+- (void)userDidSelectColor:(UIColor *)color;
+
+@end
+
 @interface C4QColorPickerViewController : UIViewController
+
+@property (nonatomic, weak) id<ColorPassingDelegate>delegate;
 
 @end
