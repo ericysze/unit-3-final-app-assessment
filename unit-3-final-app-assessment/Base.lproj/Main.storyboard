@@ -162,11 +162,89 @@
                             <outlet property="delegate" destination="Q41-6z-oZL" id="DhZ-Vp-7N4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Cat Facts" id="Wcl-Wy-q65"/>
+                    <navigationItem key="navigationItem" title="Cat Facts" id="Wcl-Wy-q65">
+                        <barButtonItem key="rightBarButtonItem" title="Saved" id="zji-ei-Ig1">
+                            <connections>
+                                <action selector="savedButtonTapped:" destination="Q41-6z-oZL" id="7OB-Ma-57L"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yux-EA-lvX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1356" y="677"/>
+        </scene>
+        <!--Cat Facts Detail View Controller-->
+        <scene sceneID="XwZ-vv-7zP">
+            <objects>
+                <viewController storyboardIdentifier="catFactsDetailVC" id="79A-lX-dkZ" customClass="C4QCatFactsDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eAC-Ww-ZdL"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wps-oV-dyW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EfW-3s-I66">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zmo-Eg-V4i">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgl-7R-pmf">
+                                <rect key="frame" x="30" y="290" width="540" height="20.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zmo-Eg-V4i" firstAttribute="leading" secondItem="EfW-3s-I66" secondAttribute="leading" id="BK8-jg-rEs"/>
+                            <constraint firstItem="fgl-7R-pmf" firstAttribute="leading" secondItem="EfW-3s-I66" secondAttribute="leading" constant="30" id="Hdn-wn-NTg"/>
+                            <constraint firstAttribute="trailing" secondItem="fgl-7R-pmf" secondAttribute="trailing" constant="30" id="Iuh-4E-bdm"/>
+                            <constraint firstItem="Zmo-Eg-V4i" firstAttribute="top" secondItem="eAC-Ww-ZdL" secondAttribute="bottom" id="SVk-Wf-lQl"/>
+                            <constraint firstItem="Wps-oV-dyW" firstAttribute="top" secondItem="Zmo-Eg-V4i" secondAttribute="bottom" id="ipw-IO-urx"/>
+                            <constraint firstItem="fgl-7R-pmf" firstAttribute="centerX" secondItem="EfW-3s-I66" secondAttribute="centerX" id="ms4-6o-D4h"/>
+                            <constraint firstItem="fgl-7R-pmf" firstAttribute="centerY" secondItem="EfW-3s-I66" secondAttribute="centerY" id="r4z-Jd-kIW"/>
+                            <constraint firstAttribute="trailing" secondItem="Zmo-Eg-V4i" secondAttribute="trailing" id="wC3-bQ-qeD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="catFactDetailLabel" destination="fgl-7R-pmf" id="GEg-fS-yHk"/>
+                        <outlet property="catImageView" destination="Zmo-Eg-V4i" id="iSh-Tv-Fvo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HUj-lo-IEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2116" y="677"/>
+        </scene>
+        <!--Saved Cat Facts Table View Controller-->
+        <scene sceneID="i80-03-HSQ">
+            <objects>
+                <tableViewController storyboardIdentifier="savedTVC" id="9Sa-PQ-cUl" customClass="C4QSavedCatFactsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TI2-fb-sVY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="savedCatFactIdentifier" id="RcH-5j-TQM">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RcH-5j-TQM" id="SDY-bO-GqQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9Sa-PQ-cUl" id="9GH-Ng-dEt"/>
+                            <outlet property="delegate" destination="9Sa-PQ-cUl" id="3xT-fM-uXm"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OKw-N2-oPz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1356" y="1429"/>
         </scene>
     </scenes>
 </document>

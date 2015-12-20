@@ -23,7 +23,14 @@
 }
 
 - (IBAction)addButtonTapped:(UIButton *)sender {
+
+    [self showAlertView];
+    [self saveIntoNSUserDefaults];
     
+}
+
+
+- (void)showAlertView {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Saved"
                                                                    message:@"New cat fact saved!"
                                                             preferredStyle:UIAlertControllerStyleAlert];
@@ -32,32 +39,33 @@
                                                           handler:^(UIAlertAction * action) {}];
     
     [alert addAction:defaultAction];
-
+    
     [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
- 
-    
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSString *catFactsKey = self.catFactLabel.text;
-    
-    [defaults setObject:@"Cat Facts" forKey:catFactsKey];
-    
-    if ([defaults objectForKey:catFactsKey]) {
-        NSLog(@"Let's Go Home Early, %@", catFactsKey);
-    } else {
-        NSLog(@"Let's Keep Going");
-    }
-    
-    
-    
-    
+}
+
+- (void)saveIntoNSUserDefaults {
     // Everything returned from NSUserDefaults will return as immutable
     // If you want to add something to a returned array, you must call/send the mutableCopy message to it
-//    NSArray *arr = @[];
-//    
-//    NSMutableArray *mArr = [arr mutableCopy];
-//    [mArr addObject:@"butt"];
+
+    // set up NSUserDefaults with Key
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"savedCatFacts"]) {
+        // create an array with NSUserDefaults and objectForKey
+        NSArray *catFactArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"savedCatFacts"];
+        // send mutableCopy message to previously created array to be able to add or remove
+        // objects into said array, set it equal to an NSMutableArray to be able to mutate it
+        NSMutableArray *mutableCatArr = [catFactArray mutableCopy];
+        // now it can be mutated
+        [mutableCatArr addObject:self.catFact];
+        // send copy message to previous mutable arr to turn it back to immutable
+        NSArray *catFactArr = [mutableCatArr copy];
+        // save array into NSUserDefaults for the same exact key
+        [[NSUserDefaults standardUserDefaults] setObject:catFactArr forKey:@"savedCatFacts"];
+        
+    } else {
+        
+        NSArray *catFactArray = [[NSArray alloc]initWithObjects:self.catFact, nil];
+        [[NSUserDefaults standardUserDefaults] setObject:catFactArray forKey:@"savedCatFacts"];
+    }
 }
 
 @end
