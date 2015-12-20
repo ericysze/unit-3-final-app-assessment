@@ -10,4 +10,6 @@
 
 @interface C4QSavedCatFactsTableViewController : UITableViewController
 
+@property (nonatomic) NSString *catFact;
+
 @end
